@@ -40,7 +40,7 @@ export const registerUserController = async (req, res) => {
             expiresIn: '1d'
         })
 
-        const url_verification =`http://localhost:5173/verify/${verificationToken}`
+        const url_verification =`${ENVIROMENT.URL_FRONT}/verify/${verificationToken}`
 
         await sendEmail({
             to: email,
