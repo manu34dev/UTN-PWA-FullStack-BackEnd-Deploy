@@ -6,7 +6,6 @@ import {
     forgorPasswordController, 
     ResetTokenController} 
     from "../controllers/auth.controller.js";
-import { verifyApikeyMiddleware } from "../middlewares/auth.middleware.js";
 
 const authRouter = express.Router()
 
