@@ -12,7 +12,7 @@ const app = express();
 const PORT = ENVIROMENT.PORT || 3000
 
 let corsOptions = {
-    origin : ['https://utn-pwa-full-stack-front-end-deploy-8nue.vercel.app'],
+    origin : ['https://utn-pwa-full-stack-front-end-deploy-8nue.vercel.app/'],
 }
 
 app.use(cors(corsOptions))
