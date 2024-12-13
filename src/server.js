@@ -11,9 +11,12 @@ import { verifyApikeyMiddleware } from "./middlewares/auth.middleware.js";
 const app = express();
 const PORT = ENVIROMENT.PORT || 3000
 
-let corsOptions = {
-    origin : ['https://utn-pwa-full-stack-front-end-deploy-8nue.vercel.app/'],
-}
+ let corsOptions = {
+    origin : [
+        'https://utn-pwa-full-stack-front-end-deploy-8nue.vercel.app',
+        'http://localhost:5173'
+    ],
+} 
 
 app.use(cors(corsOptions))
 app.use(express.json({limit: '5mb'}))
