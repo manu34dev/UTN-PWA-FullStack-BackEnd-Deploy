@@ -49,8 +49,7 @@ export const registerUserController = async (req, res) => {
             <h1>Verificacion de email</h1>
             <p>Dale clic al boton de abajo para verificar tu email</p>
             <a href="${url_verification}"> Click aqui </a>
-                `
-            
+            `
         })
 
         const newUser = new User({
@@ -102,9 +101,6 @@ export const verifyMailValidationToken = async(req, res) => {
             return res.json(response)
         }
 
-        //Verifico la firma del Token, debe ser la misma que la clave secreta, controla que sea emitida desde mi server
-        //Si falla la lectura o si expira el token, hara un throw en el catch
-        //La constante decodedToken contiene el payload de mi token
         const decodedToken = jwt.verify(verification_Token, ENVIROMENT.JWT_SECRET)
         const user = await User.findOne({email: decodedToken.email})
         if (!user) {
@@ -248,7 +244,7 @@ export const forgorPasswordController = async (req, res) => {
 
             const resetURL = `${ENVIROMENT.URL_FRONT}/reset-password/${resetToken}`
 
-            sendEmail({
+            await sendEmail({
                 to: user.email,
                 subject: "Restablecer contraseña",
                 html: 
@@ -259,7 +255,6 @@ export const forgorPasswordController = async (req, res) => {
                     <a href="${resetURL}">Restablecer contraseña</a>
                 </div>
                 `
-                
             })
 
             const response = new ResponseBuilder()
